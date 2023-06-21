@@ -1,0 +1,67 @@
+@keyframes buttonAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.game-button {
+  font-size: 1.2em;
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.game-button.animate {
+  animation: buttonAnimation 1s infinite;
+}
+
+.game-button:hover {
+  background-color: #2980b9;
+}
+
+.game-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+p {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #333;
+}
+
+.message {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.reset-button {
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    background-color: #fff;
+    padding: 10px;
+  }
+
+  .game-button {
+    font-size: 1.1em;
+    padding: 8px 16px;
+  }
+
+  p {
+    font-size: 1em;
+  }
+}
