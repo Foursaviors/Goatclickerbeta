@@ -7,6 +7,18 @@ const message = document.getElementById('message');
 const audio = new Audio('sound.mp3');
 
 let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+const randomWords = [
+  'ABCDE',
+  'FGHIJ',
+  'KLMNO',
+  'PQRST',
+  'UVWXY',
+  'Z1234',
+  '56789',
+  'UHGTV',
+  // ... add the remaining random words here
+];
+const usedWords = new Set(); // Track used words
 
 counter.textContent = clickCount;
 
@@ -21,8 +33,8 @@ button.addEventListener('click', () => {
     button.classList.remove('animate');
   }, 1000);
 
-  if (clickCount === 250) {
-    showMessage("You reached 250. This is beta.");
+  if (clickCount === 250 || clickCount % 250 === 0) {
+    showMessage(getRandomWord());
   } else if (clickCount === 253) {
     hideMessage();
   }
@@ -42,7 +54,7 @@ specialButton.addEventListener('click', () => {
 });
 
 testButton.addEventListener('click', () => {
-  clickCount += 50;
+  clickCount += 40;
   counter.textContent = clickCount;
   localStorage.setItem('clickCount', clickCount);
 });
@@ -61,3 +73,17 @@ function showMessage(msg) {
 function hideMessage() {
   message.textContent = "";
 }
+
+function getRandomWord() {
+  let randomIndex = Math.floor(Math.random() * randomWords.length);
+  let word = randomWords[randomIndex];
+  while (usedWords.has(word)) {
+    randomIndex = Math.floor(Math.random() * randomWords.length);
+    word = randomWords[randomIndex];
+  }
+  usedWords.add(word);
+  if (usedWords.size === randomWords.length) {
+    usedWords.clear(); // Reset usedWords set if all words have been used
+  }
+  return word;
+  }
