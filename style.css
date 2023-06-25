@@ -65,3 +65,11 @@ p {
     font-size: 1em;
   }
 }
+body {
+            background-image: url("Untitled255_20230625091816.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+    
